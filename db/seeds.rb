@@ -7,6 +7,6 @@
 #   Major.create(:name => 'Daley', :city => cities.first)
 
 puts 'Creating settings...'
-{"registeration_type"=>"2", "validity_period"=>"14"}.each do |key, value|
+{"registeration_type"=>"2", "validity_period"=>"14", "email_subject"=>"Invitation", "email_from"=>"noreply@noreply.com"}.each do |key, value|
   InvitationSetting.find_or_create_by_key(key, :description=>"", :value=>value)
 end

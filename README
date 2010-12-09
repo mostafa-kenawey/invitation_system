@@ -24,4 +24,7 @@ Installation
   end
 
 - $ ruby script\server
-- access the invitation page using this URL (/users/USER_ID/invitations)
+
+Using the invitation system
+---------------------------
+- To access the invitations page, use this URL (/users/USER_ID/invitations).
