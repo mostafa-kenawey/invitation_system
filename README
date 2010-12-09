@@ -1,0 +1,27 @@
+Invitation System
+#################
+
+Invitation system is a rails engine, it allows users to have a limit of invitations to invite users, each invitations has a expiration date and status (accepted, waiting, expired), the admin can switch between allowing invitations and not allowing invitations.
+
+Requirements
+------------
+A rails application has a default 'authlogic' impelementation and a user.rb model
+
+Installation
+------------
+- $ ruby script\plugin install git://github.com/dr-click/invitation_system.git
+- $ rake db:migrate
+- $ rake db:seed
+- add the following code in the action of creating new user (UsersController#create)
+  suppose that you have @user variable that contains the new user attributes
+  after saving the @user add the following
+  
+  invitation = Invitation.find(:first, :conditions => ["invitation_key = ? AND status = ? AND expiry_date >= ?", params[:invitation_key], false, Date.today])
+  if invitation
+    invitation.status = InvitationStatus.accepted
+    invitation.invited_id = @user.id
+    invitation.save!
+  end
+
+- $ ruby script\server
+- access the invitation page using this URL (/users/USER_ID/invitations)
