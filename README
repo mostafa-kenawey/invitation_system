@@ -5,7 +5,7 @@ Invitation system is a rails engine, it allows users to have a limit of invitati
 
 Requirements
 ------------
-A rails application has a default 'authlogic' impelementation and a user.rb model
+A rails application has a default 'authlogic' implementation and a user.rb model
 
 Installation
 ------------
