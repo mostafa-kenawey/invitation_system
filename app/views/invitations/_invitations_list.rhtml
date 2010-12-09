@@ -1,0 +1,41 @@
+<div>
+	<table>
+		<tr>
+			<th>Invited Email</th>
+			<th>Login Name(If invitation is accepted)</th>
+			<th>Invitation Status</th>
+			<th>Invitation Expiration</th>
+			<th></th>
+		</tr>
+		
+		<% invitations.each do |invitation| %>
+			<% resend = true %>
+			<% if invitation.invitation_status == InvitationStatus.accepted %>
+			  <% resend = false %>
+				<% invited_name = link_to "REPLACE_WITH_LOGIN_NAME", user_path(invitation.invited_id) %>
+				<% status = "Accepted" %>
+				<% expiry_date = "---" %>			
+			<% elsif invitation.invitation_status == InvitationStatus.expired %>
+				<% invited_name = "---" %>
+				<% expiry_date = invitation.expiry_date %>
+				<% status = "Expired" %>
+			<% elsif invitation.invitation_status == InvitationStatus.waiting %>
+        <% invited_name = "---" %>
+        <% expiry_date = invitation.expiry_date %>
+        <% status = "Waiting for reply" %>
+			<% end %>
+			<tr>
+				<td ><%= invitation.invited_email %></td>
+				<td><%= invited_name %></td>				
+				<td><%= status %></td>
+				<td><%= expiry_date %></td>
+				
+				<% if resend %>
+			  <td><a href="/users/<%= current_user.id%>/invitations/resend/<%= invitation.id %>">Re-send</a></td>
+				<% else %>
+				<td>---</td>
+				<% end %>
+			</tr>
+		<% end %>
+	</table>
+</div>

@@ -1,0 +1,8 @@
+You are invited by <strong><%=@invitation.inviter_name%></strong><br/>
+To Accept the invitation, click on the following link
+<a href="http://<%= @domain -%>/accept_invitation/<%= @invitation.invitation_key -%>">
+  http://<%= @domain -%>/accept_invitation/<%= @invitation.invitation_key -%>
+</a>
+<br/> 
+<strong><%=@invitation.inviter_name%></strong> Is telling you :<br/><br/>
+<%= @invitation.body %><br/><br/>
