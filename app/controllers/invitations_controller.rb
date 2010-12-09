@@ -99,7 +99,7 @@ class InvitationsController < InvitationApplicationController
       #Updating current_user with the new number of invitations
       current_user.invitations_count = @user.current_invitations_count
       
-      flash[:success] = "Invitations have been sent to :<br/>" + emails_list.join("<br/>")
+      flash[:success] = "Invitation has been sent to :<br/>" + emails_list.join("<br/>")
       redirect_to :action => 'index'
       
     rescue => e
@@ -157,8 +157,9 @@ class InvitationsController < InvitationApplicationController
   #######
   
   def is_invitations_enabled?
-    if InvitationSetting.registeration_type != RegisterationType.REGISTRATION_WITH_INVITATION
+    if InvitationSetting.registration_type != RegistrationType.registration_with_invitation
       flash[:alert] = "Sorry, The invitation system has been disabled by the administartor"
+	  redirect_to user_invitations_path(current_user)
       return false
     end
     return true

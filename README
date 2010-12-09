@@ -28,3 +28,8 @@ Installation
 Using the invitation system
 ---------------------------
 - To access the invitations page, use this URL (/users/USER_ID/invitations).
+- To access the invitation settings page, use this URL (/invitation_settings), the page contains the following settings
+  *  Registration Type >> the system registration status (Registration Open, Registration With Invitation, Registration Closed)
+  *  Validity Period >> the invitation validity period(per days)
+  *  Email From >> The sender of the invitation email
+  *  Email Subject >> the subject of the invitation email

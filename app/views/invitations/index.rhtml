@@ -1,5 +1,5 @@
 <h1>Invittations</h1>
-<% if InvitationSetting.registeration_type == RegisterationType.REGISTRATION_WITH_INVITATION %>
+<% if InvitationSetting.registration_type == RegistrationType.registration_with_invitation %>
 	<% if current_user.current_invitations_count <= 0 %>				
 		<span>You don't have more Invitations, you can't invite more users</span>
 	<% elsif current_user.invitations_expiration and current_user.invitations_expiration <= Date.today %>

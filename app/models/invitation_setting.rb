@@ -1,6 +1,8 @@
 class InvitationSetting < ActiveRecord::Base
-  def self.registeration_type
-    (InvitationSetting.find_by_key("registeration_type").try :value).to_i
+  validates_presence_of :key, :value
+  
+  def self.registration_type
+    (InvitationSetting.find_by_key("registration_type").try :value).to_i
   end
   
   def self.validity_period
