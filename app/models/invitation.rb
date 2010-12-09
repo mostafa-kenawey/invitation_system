@@ -13,13 +13,13 @@ class Invitation < ActiveRecord::Base
   end
  
   def accept!(invited_id)
-    self.status = 1 #invitation accepted 
+    self.status = InvitationStatus.accepted
     self.invited_id = invited_id
     self.save!
   end
   
   def invited
-    User.find self.invited_id
+    invited_id ? User.find self.invited_id : nil
   end
   
   def invitation_status

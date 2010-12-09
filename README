@@ -7,6 +7,7 @@ Requirements
 ------------
 A rails application has a default 'authlogic' implementation and a user.rb model
 
+
 Installation
 ------------
 - $ ruby script\plugin install git://github.com/dr-click/invitation_system.git
@@ -17,15 +18,13 @@ Installation
   after saving the @user add the following
   
   invitation = Invitation.find(:first, :conditions => ["invitation_key = ? AND status = ? AND expiry_date >= ?", params[:invitation_key], false, Date.today])
-  if invitation
-    invitation.status = InvitationStatus.accepted
-    invitation.invited_id = @user.id
-    invitation.save!
-  end
+  invitation.accept!(@user.id) if invitation
 
+  
 - $ ruby script\server
 
-Using the invitation system
+
+Using the Invitation System
 ---------------------------
 - To access the invitations page, use this URL (/users/USER_ID/invitations).
 - To access the invitation settings page, use this URL (/invitation_settings), the page contains the following settings
@@ -33,3 +32,10 @@ Using the invitation system
   *  Validity Period >> the invitation validity period(per days)
   *  Email From >> The sender of the invitation email
   *  Email Subject >> the subject of the invitation email
+
+  
+Useful Methods
+--------------
+- nvitationSetting.registration_type >> return the system registration type
+- nvitationSetting.validity_period >> return the system validity period
+- @invitation.invited >> return the invited user for a specific invitation if invitation is accepted
