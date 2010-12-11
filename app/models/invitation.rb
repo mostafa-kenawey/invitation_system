@@ -19,7 +19,7 @@ class Invitation < ActiveRecord::Base
   end
   
   def invited
-    invited_id ? User.find self.invited_id : nil
+    invited_id ? User.find(invited_id) : nil
   end
   
   def invitation_status
