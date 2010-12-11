@@ -1,5 +1,23 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  invitation_system: 
+    invitation:
+      sender: Sender
+      messages:
+        expired: "Sorry, Your invitations has been expired."
+        more_users: "Sorry, You can't invite more users." 
+        emails_empty: "Please add at least one valid email address"
+        maximum_limit: "Can't send invitation more than your maximum limit"
+        sender_name: "Please type the sender name"
+        invitation_message: "Please type the invitation message"
+        not_valid_email: "Email ({{email}}) is not valid email address"
+        email_exists: "The email ({{email}}) already exists"
+        waiting_for_reply: "An invitation has been sent to the mail ({{email}}), and waiting for reply"
+        invitation_expired: "An invitation has been sent to the mail ({{email}}), and the invitation was expired."
+        invitation_accepted: "An invitation has been sent to the mail ({{email}}), and the invitation was accepted"
+        invitation_sent: "Invitation has been sent to :<br/> {{emails}}"
+        invitation_not_found: "Can't find the invitation"
+        invitation_not_valid: "This invitation is not valid"
+        invitation_system_id_disabled: "Sorry, The invitation system has been disabled by the administartor"
+    
+    setting: 
+      updated: "Invitation setting has been updated"
