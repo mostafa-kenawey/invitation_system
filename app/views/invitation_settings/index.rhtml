@@ -1,0 +1,16 @@
+<div>
+	<h1>Invitation Settings</h1>
+	<% form_for(InvitationSetting.new, :url=>"/invitation_settings/update_settings") do |f| %>
+	
+	  <% @invitation_settings.each do |invitation_setting| %>
+		<label><%= invitation_setting.key.titleize %>: </label><br/>
+	    <% if invitation_setting.key == "registration_type" %>
+		<%= select_tag "", options_for_select([["Registration Open", RegistrationType.registration_open], ["Registration With Invitation", RegistrationType.registration_with_invitation], ["Registration Closed", RegistrationType.registration_close]], InvitationSetting.registration_type), :name=>"invitation_settings[#{invitation_setting.key}]" %>
+		<% else %>
+	    <p><input type="text" name="invitation_settings[<%=invitation_setting.key%>]" value="<%= invitation_setting.value%>" size="30"></input></p>
+		<% end %>
+	  <% end %>
+	
+	  <p><button type="submit">Save Settings</button></p>
+	<% end %>
+</div>
